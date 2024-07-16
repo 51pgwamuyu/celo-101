@@ -8,9 +8,34 @@ We will go through an example of a celo smart contract written in solidity for  
 
 
 // SPDX-License-Identifier: GPL-3.0
+
 pragma solidity >=0.7.0 <0.9.0;
 
-// SPDX-License-Identifier: GPL-3.0
+interface IERC20Token {
+    function transfer(address, uint256) external returns (bool);
+
+    function approve(address, uint256) external returns (bool);
+
+    function transferFrom(
+        address,
+        address,
+        uint256
+    ) external returns (bool);
+
+    function totalSupply() external view returns (uint256);
+
+    function balanceOf(address) external view returns (uint256);
+
+    function allowance(address, address) external view returns (uint256);
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
+}
+
 
 SPDX-License-Identifier: This is a standard way to identify the license of a software project, introduced by the Software Package Data Exchange (SPDX) organization. It helps in automatically identifying the license of a piece of software, which is crucial for compliance and legal reasons.
 
