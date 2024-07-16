@@ -446,6 +446,9 @@ contract art {
 **Testing And Deploying the Smart Contract**
 To test the smart contract vist [remix](https://docs.celo.org/developer/deploy/remix).You can install celo extension 
 Create Contract: Create a new file for your Solidity smart contract in Remix like ours we will name it as *artmarkeplace.sol*.
+
+![Alt Text](./images/smart.png)
+
 Compile Contract: Click on the "Solidity Compiler" tab in the sidebar and select the appropriate compiler version for your contract. Click "Compile" to compile your contract code.
 To Deploy Contract Once compiled successfully, switch to the "Deploy & Run Transactions" tab. Select the desired environment in our case, Injected Web3 from the dropdown menu and connect your CELO Alfajores wallet\
 Deploy Contract: Click on the "Deploy" button to deploy to CELO Alfajores network.
