@@ -450,6 +450,10 @@ Create Contract: Create a new file for your Solidity smart contract in Remix lik
 ![Alt Text](./images/smart.png)
 
 Compile Contract: Click on the "Solidity Compiler" tab in the sidebar and select the appropriate compiler version for your contract. Click "Compile" to compile your contract code.
+
+![Alt Text](./images/smart2.png)
+
+
 To Deploy Contract Once compiled successfully, switch to the "Deploy & Run Transactions" tab. Select the desired environment in our case, Injected Web3 from the dropdown menu and connect your CELO Alfajores wallet\
 Deploy Contract: Click on the "Deploy" button to deploy to CELO Alfajores network.
 Confirm Deployment: Confirm the deployment transaction in your connected wallet (e.g., MetaMask) if prompted. Wait for the transaction to be confirmed on the blockchain.
