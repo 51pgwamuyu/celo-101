@@ -70,7 +70,7 @@ contract art {
   event artDeleted(
     uint256 indexed  artid, address indexed  owner,string artname
  );
-    // Function to create a payee.
+    // Function to upload art
     function uploadAnArt(
         string memory _artname,
         string memory _artimage,
@@ -121,7 +121,7 @@ contract art {
             "Only owner is permitted to do so"
         );
 
-        // Shift remaining payees down in the mapping
+        
         for (uint256 i = id; i < artsLength - 1; i++) {
             arts[i] = arts[i + 1];
         }
@@ -134,7 +134,7 @@ contract art {
     }
 
     //get all arts
-    // function to fund a payee
+    // function to buy art
     function buyArt(uint256 _index) public payable {
         require(
             IERC20Token(cUsdTokenAddress).transferFrom(

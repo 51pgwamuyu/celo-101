@@ -222,7 +222,6 @@ This function is used to get details of a specific art by passing the art id .
             "Only owner is permitted to do so"
         );
 
-        // Shift remaining payees down in the mapping
         for (uint256 i = id; i < artsLength - 1; i++) {
             arts[i] = arts[i + 1];
         }
@@ -272,6 +271,8 @@ This function take art id.when user click like button the address of the user is
 
 
 This is the full code 
+
+\`\`\`solidity
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
@@ -327,7 +328,6 @@ contract art {
         address user;
     }
 
-    // mapping to store payee details
     mapping(uint256 => Art) internal arts;
     mapping(uint256 => Comment[]) internal _comments;
     mapping(uint256 => Like[]) internal _likes;
@@ -344,7 +344,7 @@ contract art {
   event artDeleted(
     uint256 indexed  artid, address indexed  owner,string artname
  );
-    // Function to create a payee.
+    // Function to upload art
     function uploadAnArt(
         string memory _artname,
         string memory _artimage,
@@ -395,7 +395,7 @@ contract art {
             "Only owner is permitted to do so"
         );
 
-        // Shift remaining payees down in the mapping
+       
         for (uint256 i = id; i < artsLength - 1; i++) {
             arts[i] = arts[i + 1];
         }
@@ -408,7 +408,7 @@ contract art {
     }
 
     //get all arts
-    // function to fund a payee
+    // function to buy art
     function buyArt(uint256 _index) public payable {
         require(
             IERC20Token(cUsdTokenAddress).transferFrom(
@@ -440,6 +440,7 @@ contract art {
         emit LikeAdded(artworkId, msg.sender);
     }
 }
+\`\`\`
 
 
 **Testing And Deploying the Smart Contract**
