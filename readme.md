@@ -445,13 +445,21 @@ contract art {
 
 **Testing And Deploying the Smart Contract**
 To test the smart contract vist [remix](https://docs.celo.org/developer/deploy/remix).You can install celo extension 
-Create Contract: Create a new file for your Solidity smart contract in Remix like ours we will name it as *artmarkeplace.sol*.
+Create Contract: Create a new file for your Solidity smart contract in Remix like ours we will name it as 
+*art.sol*.
 
 ![Alt Text](./images/smart.png)
 
 Compile Contract: Click on the "Solidity Compiler" tab in the sidebar and select the appropriate compiler version for your contract. Click "Compile" to compile your contract code.
 
 ![Alt Text](./images/smart2.png)
+Go to your celo wallet that is Alfajores Test Network and copy the address
+![Alt Text](./images/smar3.png)
+After copying celo wallet address paste it to the space next to deploy button
+![Alt Text](./images/smart4.png)
+if your smart have deployed successfully you will see this
+![Alt Text](./images/smart5.png)
+
 
 **Conclusion**
 In this tutorial, we've explored the process of building a decentralized art markeplace on the Celo blockchain using Solidity smart contracts. 
