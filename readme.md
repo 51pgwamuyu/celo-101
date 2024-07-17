@@ -32,17 +32,17 @@ We will go through an example of a celo smart contract written in solidity for a
 Navigate to **Remix IDE**.
 
 Create a new Fileand call it a artmarketplace.sol and paste the following code below
-
+```
     // SPDX-License-Identifier: GPL-3.0
 
      pragma solidity >=0.7.0 <0.9.0;
-
+```
 SPDX-License-Identifier: This is a standard way to identify the license of a software project, It helps in automatically identifying the license of a piece of software, which is crucial for compliance and legal reasons.
 
 pragma solidity >=0.7.0 <0.9.0;
 
 pragma solidity: This line specifies the compiler version for the Solidity code.>=0.7.0 <0.9.0: This range indicates that the smart contract is compatible with Solidity compiler versions 0.7.0 and higher, but less than version 0.9.0. Specifying a range of compiler versions is important because different versions may introduce changes or deprecations in the language syntax or features. By limiting the range, the coder ensures that the contract behaves consistently across a set of compiler versions, avoiding unexpected behavior due to compiler differences.
-
+```
 interface IERC20Token {
 function transfer(address, uint256) external returns (bool);
 
@@ -68,7 +68,7 @@ function transfer(address, uint256) external returns (bool);
     );
 
 }
-
+```
 The IERC20Token interface outlines the standard functions and events defined by the ERC-20 token standard.To understand this we will go through each function defined above.
 
 **Why ERC-20?8**
@@ -93,7 +93,7 @@ The ERC-20 standard defines a common list of rules for all Ethereum tokens examp
 <span styele="color:green">_Transfer(address indexed from, address indexed to, uint256 value)_</span>: This event is emitted whenever tokens are transferred from one address to another. The from and to addresses are indexed, meaning they can be queried easily, and the value indicates the amount of tokens transferred. This event is crucial for tracking token movements and auditing transactions.
 
 <span styele="color:green">_Approval(address indexed owner, address indexed spender, uint256 value)_</span>: Emitted when the approve function is called, signaling that the spender is now allowed to withdraw up to a certain amount of tokens from the owner's account. Like the Transfer event, the owner and spender addresses are indexed, facilitating easy queries.
-
+```
 contract art {
 uint256 internal artsLength = 0;
 address internal cUsdTokenAddress =
@@ -104,17 +104,18 @@ address internal cUsdTokenAddress =
     }
 
 }
+```
 contarct Art{...}.To define a contract in solidity we use name **contract** followed by name of your contract like oures is Art.
 uint256 is a data type thata stands for unsigned integer .**Internal** it means that the variable can only be accessed from within the current contract **artLength** represents the count of arts created by user.
 **address internal cUsdTokenAddress =0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;** To get ccUsdTokenAddres you need Celo Wallet,You can Install a Celo wallet extension from you browser extension store like chromestore.Finish the neccessary steps for registration.<>Choose you test network for our case we will go with **Alfajores Test Network**.Copy the address and head to [faucet](https://celo.org/developers/faucet) to claim free tokens for deploying your smart contract.
-
+```
     constructor(address _cUsdTokenAddress) {
         cUsdTokenAddress = _cUsdTokenAddress;
     }
-
+```
 _constructor_ is executed automatically once when the contract is deployed to the blockchain.
 The primary goal of the constructor in this context is to set the address of the Celo USD (cUSD) token, which is represented by the cUsdTokenAddress state variable.By setting this address during deployment, the contract can later reference it for operations involving the cUSD token, such as transferring funds or checking balances.
-
+```
 struct Art {
 address payable owner;
 string artName;
@@ -131,17 +132,17 @@ uint256 timestamp;
     struct Like {
         address user;
     }
-
+```
 _Struct_ is a ustom data type that allows you to group together variables of diffrent data types. Structs are particularly useful for organizing related pieces of data.
 _address payable owner_;
 Type: address payable owner. This field stores the address of the owner of the artwork. The payable keyword allows this address to receive tokens. This is useful for contracts that involve financial transactions, as it enables the contract to send funds to the owner's address.
-
+```
     mapping(uint256 => Art) internal arts;
     mapping(uint256 => Comment[]) internal _comments;
     mapping(uint256 => Like[]) internal _likes;
-
+```
 _mappings_ is a powerful data structures for associating unique keys with values. Mappings are essentially hash tables, offering constant-time complexity for reading and writing operations. Each mapping is declared with a specific key type and a value type, and they are all marked as internal, meaning they can only be accessed within the contract or contracts deriving from it.Like in the example above key type is uint256 associated with Art struct as its value which contain details about artwork.
-
+```
 event CommentAdded(
 uint256 indexed artworkId,
 address indexed user,
@@ -154,7 +155,7 @@ uint256 indexed artid, address indexed owner,string artname
 event artDeleted(
 uint256 indexed artid, address indexed owner,string artname
 );
-
+```
 The events outlined above are a core aspect of the art contract, serving as notifications that occur when specific actions take place within the contract.
 
 Explaining the example above _CommentAdded Event_
@@ -165,6 +166,7 @@ user (indexed): The address of the user who posted the comment. Indexing this pa
 content: The textual content of the comment itself.
 
 **User upload art function**
+```
 function uploadAnArt(
 string memory \_artname,
 string memory \_artimage,
@@ -186,13 +188,14 @@ require(\_artprice > 1, "the price of art must be greater than 1 celo");
           emit artCreated(artsLength, msg.sender, _artname);
         artsLength++;
     }
-
+```
 Function uploadAnArt is used to upload artwork.This function takes four parameters related to the artwork and performs several checks before adding the artwork to the contract's state.To pass parameter into a solidity functon you must define type of data you want to upload.Example
 _string memory \_artname_ specifies that \_artname is of type string.memory is a data location which is temporary.
 _require_ is used to verify that data that is passed by user meets the requirement required by contract.
 _msg.sender_ is the address calling the function
 
     // get an art by detailas.
+    ```
     function getArtDetails(uint256 _id)
         public
         view
@@ -212,10 +215,11 @@ _msg.sender_ is the address calling the function
             arts[_id].artprice
         );
     }
-
+```
 This function is used to get details of a specific art by passing the art id .
 
     // owner delete an art
+    ```
     function deleteArt(uint256 id) public {
         require(
             msg.sender == arts[id].owner,
@@ -232,10 +236,11 @@ This function is used to get details of a specific art by passing the art id .
 
         artsLength--;
     }
-
+```
 This function is used to delete art from smart contract.You pass the id of the art.require is used to make sure that its only the owner of the art can delete it.
 
 //function to buy art
+```
 function buyArt(uint256 \_artid) public payable {
 require(
 IERC20Token(cUsdTokenAddress).transferFrom(
@@ -246,27 +251,30 @@ arts[_artid].artprice
 "Transfer failed."
 );
 }
-
+```
 This function is used for purchase of art where you pass the artid as parameter.The require statement is used to ensure that a condition is met before proceeding with the function execution. In this case, we perform a transferFrom operation on the ERC-20 token contract specified by cUsdTokenAddress.The first argument to transferFrom is the sender of the tokens, which is the caller of the buyArt function (msg.sender).
 The second argument is the recipient of the tokens, which is the owner of the artwork (arts[_artid].owner).
 The third argument is the amount of tokens to transfer, which is the price of the artwork (arts[_artid].artprice).
 If the transferFrom operation fails (e.g., due to insufficient balance, allowance issues, or incorrect parameters), the require statement will revert the transaction and display the message "Transfer failed."
 
 //This function is used to add comment about an art
+```
    function addComment(uint256 artworkId, string memory content) public {
     _comments[artworkId].push(
     Comment(msg.sender, content, block.timestamp)
    );
     emit CommentAdded(artworkId, msg.sender, content); 
    }
+   ```
 This function takes artid and the comment.It the emit event commentAdded if the function runs successfully.
 
 //function to addlike to an art
+```
     function addLike(uint256 artworkId) public {
         _likes[artworkId].push(Like(msg.sender));
         emit LikeAdded(artworkId, msg.sender);
     }
-
+```
 This function take art id.when user click like button the address of the user is added to _likes comment.It then emmits events likeAdded
 
 
