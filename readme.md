@@ -1,12 +1,12 @@
 #CELO-101
 
-**Table of Contents**
-    Prerequisites <br />
-    Requirements<br />
-    What is Celo<br />
-    Building our Smart Contract<br />
-    Deploying the Smart Contract<br />
-    Conclusion<br />
+**Table of Contents**<br />
+    1.Prerequisites <br />
+    2.Requirements<br />
+    3.What is Celo<br />
+    4.Building our Smart Contract<br />
+    5.Deploying the Smart Contract<br />
+    6.Conclusion<br />
 
 **Prerequisites**
 
