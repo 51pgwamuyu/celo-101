@@ -272,7 +272,7 @@ This function take art id.when user click like button the address of the user is
 
 This is the full code 
 
-\`\`\`solidity
+```solidity
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
@@ -440,7 +440,7 @@ contract art {
         emit LikeAdded(artworkId, msg.sender);
     }
 }
-\`\`\`
+\\\
 
 
 **Testing And Deploying the Smart Contract**
