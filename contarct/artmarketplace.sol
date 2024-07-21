@@ -4,45 +4,32 @@ pragma solidity >=0.7.0 <0.9.0;
 
 interface IERC20Token {
     function transfer(address, uint256) external returns (bool);
-
     function approve(address, uint256) external returns (bool);
-
-    function transferFrom(
-        address,
-        address,
-        uint256
-    ) external returns (bool);
-
+    function transferFrom(address, address, uint256) external returns (bool);
     function totalSupply() external view returns (uint256);
-
     function balanceOf(address) external view returns (uint256);
-
     function allowance(address, address) external view returns (uint256);
 
     event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(
-        address indexed owner,
-        address indexed spender,
-        uint256 value
-    );
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-contract art {
-    uint256 internal artsLength = 0;
-    address internal cUsdTokenAddress =
-        0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
+contract Art {
+    uint256 private artCount = 0;
+    address payable public cUsdTokenAddress;
 
     constructor(address _cUsdTokenAddress) {
-        cUsdTokenAddress = _cUsdTokenAddress;
+        cUsdTokenAddress = payable(_cUsdTokenAddress);
     }
 
-    struct Art {
+    struct Artwork {
         address payable owner;
-        string artName;
-        string artimageurl;
-        string artdescription;
-        uint256 artprice;
+        string name;
+        string imageUrl;
+        string description;
+        uint256 price;
     }
+
     struct Comment {
         address user;
         string content;
@@ -53,50 +40,51 @@ contract art {
         address user;
     }
 
-    // mapping to store payee details
-    mapping(uint256 => Art) internal arts;
-    mapping(uint256 => Comment[]) internal _comments;
-    mapping(uint256 => Like[]) internal _likes;
+    mapping(uint256 => Artwork) private arts;
+    mapping(uint256 => Comment[]) private _comments;
+    mapping(uint256 => Like[]) private _likes;
 
-    event CommentAdded(
-        uint256 indexed artworkId,
-        address indexed user,
-        string content
-    );
+    event ArtworkCreated(uint256 indexed artworkId, address indexed owner, string name);
+    event ArtworkDeleted(uint256 indexed artworkId, address indexed owner, string name);
+    event CommentAdded(uint256 indexed artworkId, address indexed user, string content);
     event LikeAdded(uint256 indexed artworkId, address indexed user);
- event artCreated(
-    uint256 indexed  artid, address indexed  owner,string artname
- );
-  event artDeleted(
-    uint256 indexed  artid, address indexed  owner,string artname
- );
-    // Function to upload art
-    function uploadAnArt(
-        string memory _artname,
-        string memory _artimage,
-        string memory _artdescription,
-        uint256 _artprice
-    ) public {
-        require(bytes(_artname).length > 0, "art name is required");
-        require(bytes(_artimage).length > 0, "artimage is required");
-        require(bytes(_artdescription).length > 0, "artdecription is required");
-        require(_artprice > 1, "the price of art must be greater than 1 celo");
 
-        arts[artsLength] = Art({
-            owner: payable(msg.sender),
-            artName: _artname,
-            artimageurl: _artimage,
-            artdescription: _artdescription,
-            artprice: _artprice
-        });
-          emit artCreated(artsLength, msg.sender, _artname);
-        artsLength++;
+    modifier onlyOwner(uint256 _artId) {
+        require(msg.sender == arts[_artId].owner, "Only owner is permitted to do so");
+        _;
     }
 
-    // get an art by detailas.
-    function getArtDetails(uint256 _id)
+    modifier validArtId(uint256 _artId) {
+        require(_artId < artCount, "Invalid art ID");
+        _;
+    }
+
+    function uploadArtwork(
+        string memory _name,
+        string memory _imageUrl,
+        string memory _description,
+        uint256 _price
+    ) public {
+        require(bytes(_name).length > 0, "Artwork name is required");
+        require(bytes(_imageUrl).length > 0, "Artwork image URL is required");
+        require(bytes(_description).length > 0, "Artwork description is required");
+        require(_price > 1, "Artwork price must be greater than 1 Celo");
+
+        arts[artCount] = Artwork({
+            owner: payable(msg.sender),
+            name: _name,
+            imageUrl: _imageUrl,
+            description: _description,
+            price: _price
+        });
+        emit ArtworkCreated(artCount, msg.sender, _name);
+        artCount++;
+    }
+
+    function getArtDetails(uint256 _artId)
         public
         view
+        validArtId(_artId)
         returns (
             address,
             string memory,
@@ -105,64 +93,46 @@ contract art {
             uint256
         )
     {
+        Artwork memory art = arts[_artId];
         return (
-            arts[_id].owner,
-            arts[_id].artName,
-            arts[_id].artdescription,
-            arts[_id].artimageurl,
-            arts[_id].artprice
+            art.owner,
+            art.name,
+            art.description,
+            art.imageUrl,
+            art.price
         );
     }
 
-    // owner delete an art
-    function deleteArt(uint256 id) public {
-        require(
-            msg.sender == arts[id].owner,
-            "Only owner is permitted to do so"
+    function deleteArt(uint256 _artId) public onlyOwner(_artId) validArtId(_artId) {
+        emit ArtworkDeleted(_artId, msg.sender, arts[_artId].name);
+        delete arts[_artId];
+    }
+
+    function buyArt(uint256 _artId) public payable validArtId(_artId) {
+        Artwork storage art = arts[_artId];
+        require(IERC20Token(cUsdTokenAddress).transferFrom(msg.sender, art.owner, art.price), "Transfer failed.");
+        art.owner = payable(msg.sender);
+    }
+
+    function addComment(uint256 _artId, string memory _content) public validArtId(_artId) {
+        require(bytes(_content).length > 0, "Comment content is required");
+
+        _comments[_artId].push(
+            Comment({
+                user: msg.sender,
+                content: _content,
+                timestamp: block.timestamp
+            })
         );
-
-        
-        for (uint256 i = id; i < artsLength - 1; i++) {
-            arts[i] = arts[i + 1];
-        }
-
-        // Delete the last element in the mapping
-        delete arts[artsLength - 1];
-         emit artDeleted(artsLength, msg.sender, arts[artsLength].artName);
-       
-        artsLength--;
+        emit CommentAdded(_artId, msg.sender, _content);
     }
 
-    //get all arts
-    // function to buy art
-    function buyArt(uint256 _index) public payable {
-        require(
-            IERC20Token(cUsdTokenAddress).transferFrom(
-                msg.sender,
-                arts[_index].owner,
-                arts[_index].artprice
-            ),
-            "Transfer failed."
-        );
+    function getComments(uint256 _artId) public view validArtId(_artId) returns (Comment[] memory) {
+        return _comments[_artId];
     }
 
-    function addComment(uint256 artworkId, string memory content) public {
-        _comments[artworkId].push(
-            Comment(msg.sender, content, block.timestamp)
-        );
-        emit CommentAdded(artworkId, msg.sender, content);
-    }
-
-    function getComments(uint256 artworkId)
-        public
-        view
-        returns (Comment[] memory)
-    {
-        return _comments[artworkId];
-    }
-
-    function addLike(uint256 artworkId) public {
-        _likes[artworkId].push(Like(msg.sender));
-        emit LikeAdded(artworkId, msg.sender);
+    function addLike(uint256 _artId) public validArtId(_artId) {
+        _likes[_artId].push(Like({user: msg.sender}));
+        emit LikeAdded(_artId, msg.sender);
     }
 }
