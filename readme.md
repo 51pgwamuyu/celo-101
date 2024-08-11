@@ -1,10 +1,10 @@
 #CELO-101
 # ART MARKETPLACE SMARTCONTRACT TUTORIAL
-##Table of Contents<br />
-    1.[Prerequisites](#Prerequisites) <br />
-    2.[Requirements](#Requirements)<br />
-    3.[What is Celo](#What-is-Celo)<br />
-    4.Building our Smart Contract<br />
+##Table of Contents
+    1.[Prerequisites](#prerequisites)
+    2.[Requirements](#requirements)
+    3.[What is Celo](#what-is-celo)
+    4.Building our Smart Contract
     5.Deploying the Smart Contract<br />
     6.Conclusion<br />
 
