@@ -1,4 +1,4 @@
-#CELO-101
+
 # ART MARKETPLACE SMARTCONTRACT TUTORIAL
 
 ## Table of Contents
@@ -59,7 +59,7 @@ Create a new file and call it a artmarketplace.sol and paste the following code 
 ```
 SPDX-License-Identifier: This is a standard way to identify the license of a software project, It helps in automatically identifying the license of a piece of software, which is crucial for compliance and legal reasons.
 
-pragma solidity ^0.8.0 ;
+#### pragma solidity ^0.8.0 ;
 
 pragma solidity: This line specifies the compiler version for the Solidity code should be greater than 0.8.0: This  indicates that the smart contract is compatible with Solidity compiler versions 0.8.0 and higher, but not less than version 0.8.0. Specifying  compiler versions is important because different versions may introduce changes or deprecations in the language syntax or features. By limiting the range, the coder ensures that the contract behaves consistently across a set of compiler versions, avoiding unexpected behavior due to compiler differences.
 ```
@@ -91,10 +91,10 @@ function transfer(address, uint256) external returns (bool);
 ```
 The IERC20Token interface outlines the standard functions and events defined by the ERC-20 token standard.To understand this we will go through each function defined above.
 
-**Why ERC-20?8**
+### Why ERC-20?8
 The ERC-20 standard defines a common list of rules for all Ethereum tokens example celo, to follow, ensuring compatibility and predictability among different tokens. By adhering to this standard, token creators enable their tokens to be compatible with a wide range of wallets, exchanges, and decentralized applications (dApps) without needing to build custom interfaces for each integration point.
 
-**Functions**
+### Functions
 
 <span style="color:red">_function transfer(address to, uint256 value)_:</span> This function allows the caller (the sender) to transfer a specified amount of tokens to another address. It's a fundamental operation that enables any holder of tokens to send them to another account. The function returns a boolean indicating success (true) or failure (false).
 
@@ -108,7 +108,7 @@ The ERC-20 standard defines a common list of rules for all Ethereum tokens examp
 
 <span styele="color:red">_function allowance(address owner, address spender)_</span>: Returns the remaining number of tokens that the spender is still allowed to draw from the owner's account. This is part of the approval mechanism, allowing holders to see how much of their tokens have been approved for spending by others.
 
-**Events**
+### Events
 
 <span styele="color:green">_Transfer(address indexed from, address indexed to, uint256 value)_</span>: This event is emitted whenever tokens are transferred from one address to another. The from and to addresses are indexed, meaning they can be queried easily, and the value indicates the amount of tokens transferred. This event is crucial for tracking token movements and auditing transactions.
 
