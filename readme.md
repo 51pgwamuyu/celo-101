@@ -96,23 +96,40 @@ The ERC-20 standard defines a common list of rules for all Ethereum tokens examp
 
 ### Functions
 
-<span style="color:red">_function transfer(address to, uint256 value)_:</span> This function allows the caller (the sender) to transfer a specified amount of tokens to another address. It's a fundamental operation that enables any holder of tokens to send them to another account. The function returns a boolean indicating success (true) or failure (false).
+### function transfer(address to, uint256 value):
 
-<span styele="color:red">_function approve(address spender, uint256 value)_</span>: Before a token holder can spend tokens owned by someone else (for example, to pay a fee or make a payment on behalf of the original owner), they must obtain approval from the token owner. This function sets an allowance, specifying how many tokens the spender is allowed to move on behalf of the owner. It also returns a boolean indicating success or failure.
+This function allows the caller (the sender) to transfer a specified amount of tokens to another address. It's a fundamental operation that enables any holder of tokens to send them to another account. The function returns a boolean indicating success (true) or failure (false).
 
-<span styele="color:red">_function transferFrom(address from, address to, uint256 value)_</span>: This function transfers a specified amount of tokens from one address to another. Unlike transfer, which moves tokens from the caller's address, transferFrom allows anyone who has been approved by the token owner to move tokens on their behalf. This is particularly useful for decentralized exchanges and other DeFi applications that need to move tokens between accounts without holding any tokens themselves.
+### function approve(address spender, uint256 value):
 
-<span styele="color:red">_function totalSupply()_</span>: Returns the total supply of tokens in existence. This is a constant value that represents the maximum number of tokens that will ever exist
+Before a token holder can spend tokens owned by someone else (for example, to pay a fee or make a payment on behalf of the original owner), they must obtain approval from the token owner. This function sets an allowance, specifying how many tokens the spender is allowed to move on behalf of the owner. It also returns a boolean indicating success or failure.
 
-<span styele="color:red">_function balanceOf(address account)_</span>: Queries and returns the current balance of tokens held by the specified address. This function is essential for checking the available funds before initiating transactions.
+### function transferFrom(address from, address to, uint256 value): 
 
-<span styele="color:red">_function allowance(address owner, address spender)_</span>: Returns the remaining number of tokens that the spender is still allowed to draw from the owner's account. This is part of the approval mechanism, allowing holders to see how much of their tokens have been approved for spending by others.
+This function transfers a specified amount of tokens from one address to another. Unlike transfer, which moves tokens from the caller's address, transferFrom allows anyone who has been approved by the token owner to move tokens on their behalf. This is particularly useful for decentralized exchanges and other DeFi applications that need to move tokens between accounts without holding any tokens themselves.
 
-### Events
+### function totalSupply():
 
-<span styele="color:green">_Transfer(address indexed from, address indexed to, uint256 value)_</span>: This event is emitted whenever tokens are transferred from one address to another. The from and to addresses are indexed, meaning they can be queried easily, and the value indicates the amount of tokens transferred. This event is crucial for tracking token movements and auditing transactions.
+This function returns the total supply of tokens in existence. This is a constant value that represents the maximum number of tokens that will ever exist
 
-<span styele="color:green">_Approval(address indexed owner, address indexed spender, uint256 value)_</span>: Emitted when the approve function is called, signaling that the spender is now allowed to withdraw up to a certain amount of tokens from the owner's account. Like the Transfer event, the owner and spender addresses are indexed, facilitating easy queries.
+### function balanceOf(address account)
+
+This function queries and returns the current balance of tokens held by the specified address. This function is essential for checking the available funds before initiating transactions.
+
+### function allowance(address owner, address spender)
+
+This funcrion returns the remaining number of tokens that the spender is still allowed to draw from the owner's account. This is part of the approval mechanism, allowing holders to see how much of their tokens have been approved for spending by others.
+
+## Events
+
+### Transfer(address indexed from, address indexed to, uint256 value):
+
+This event is emitted whenever tokens are transferred from one address to another. The from and to addresses are indexed, meaning they can be queried easily, and the value indicates the amount of tokens transferred. This event is crucial for tracking token movements and auditing transactions.
+
+### Approval(address indexed owner, address indexed spender, uint256 value):
+
+This Event is emitted when the approve function is called, signaling that the spender is now allowed to withdraw up to a certain amount of tokens from the owner's account. Like the Transfer event, the owner and spender addresses are indexed, facilitating easy queries.
+
 ```
 contract art {
 uint256 internal artsLength = 0;
