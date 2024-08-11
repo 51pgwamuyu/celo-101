@@ -46,7 +46,7 @@
  - A basic understanding of blockchain and Web3
 
 
-##Building our Smart Contract
+## Building our Smart Contract
 
 We will go through an example of a celo smart contract I have  written in solidity for art marketplace
 Navigate to **Remix IDE**.
@@ -55,13 +55,13 @@ Create a new file and call it a artmarketplace.sol and paste the following code 
 ```
     // SPDX-License-Identifier: GPL-3.0
 
-     pragma solidity >=0.7.0 <0.9.0;
+     pragma solidity ^0.8.0;
 ```
 SPDX-License-Identifier: This is a standard way to identify the license of a software project, It helps in automatically identifying the license of a piece of software, which is crucial for compliance and legal reasons.
 
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity ^0.8.0 ;
 
-pragma solidity: This line specifies the compiler version for the Solidity code.>=0.7.0 <0.9.0: This range indicates that the smart contract is compatible with Solidity compiler versions 0.7.0 and higher, but less than version 0.9.0. Specifying a range of compiler versions is important because different versions may introduce changes or deprecations in the language syntax or features. By limiting the range, the coder ensures that the contract behaves consistently across a set of compiler versions, avoiding unexpected behavior due to compiler differences.
+pragma solidity: This line specifies the compiler version for the Solidity code should be greater than 0.8.0: This  indicates that the smart contract is compatible with Solidity compiler versions 0.8.0 and higher, but not less than version 0.8.0. Specifying  compiler versions is important because different versions may introduce changes or deprecations in the language syntax or features. By limiting the range, the coder ensures that the contract behaves consistently across a set of compiler versions, avoiding unexpected behavior due to compiler differences.
 ```
 interface IERC20Token {
 function transfer(address, uint256) external returns (bool);
