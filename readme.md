@@ -174,66 +174,73 @@ The primary goal of the constructor in this context is to set the address of the
 
 ```
 struct Art {
-address payable owner;
-string artName;
-string artimageurl;
-string artdescription;
-uint256 artprice;
+  address payable owner;
+  string artName;
+  string artimageurl;
+  string artdescription;
+  uint256 artprice;
 }
 struct Comment {
-address user;
-string content;
-uint256 timestamp;
+   address user;
+   string content;
+   uint256 timestamp;
 }
 
-    struct Like {
-        address user;
-    }
+struct Like {
+   address user;
+}
+
 ```
-_Struct_ is a ustom data type that allows you to group together variables of diffrent data types. Structs are particularly useful for organizing related pieces of data.
-_address payable owner_;
-Type: address payable owner. This field stores the address of the owner of the artwork. The payable keyword allows this address to receive tokens. This is useful for contracts that involve financial transactions, as it enables the contract to send funds to the owner's address.
+### _Struct_ 
+
+This is a custom data type that allows you to group together variables of diffrent data types. Structs are particularly useful for organizing related pieces of data.
+
+### _address payable owner_;
+
+The type of address payable owner  stores the address of the owner of the artwork. The payable keyword allows this address to receive tokens. This is useful for contracts that involve financial transactions, as it enables the contract to send funds to the owner's address.
+
 ```
     mapping(uint256 => Art) internal arts;
     mapping(uint256 => Comment[]) internal _comments;
     mapping(uint256 => Like[]) internal _likes;
 ```
-_mappings_ is a powerful data structures for associating unique keys with values. Mappings are essentially hash tables, offering constant-time complexity for reading and writing operations. Each mapping is declared with a specific key type and a value type, and they are all marked as internal, meaning they can only be accessed within the contract or contracts deriving from it.Like in the example above key type is uint256 associated with Art struct as its value which contain details about artwork.
+### _mappings_
+
+This is a powerful data structures for associating unique keys with values. Mappings are essentially hash tables, offering constant-time complexity for reading and writing operations. Each mapping is declared with a specific key type and a value type, and they are all marked as internal, meaning they can only be accessed within the contract or contracts deriving from it.Like in the example above key type is uint256 associated with Art struct as its value which contain details about artwork.
+
 ```
 event CommentAdded(
-uint256 indexed artworkId,
-address indexed user,
-string content
+  uint256 indexed artworkId,
+  address indexed user,
+  string content
 );
 event LikeAdded(uint256 indexed artworkId, address indexed user);
 event artCreated(
-uint256 indexed artid, address indexed owner,string artname
+ uint256 indexed artid, address indexed owner,string artname
 );
 event artDeleted(
-uint256 indexed artid, address indexed owner,string artname
+  uint256 indexed artid, address indexed owner,string artname
 );
+
 ```
 The events outlined above are a core aspect of the art contract, serving as notifications that occur when specific actions take place within the contract.
 
-Explaining the example above _CommentAdded Event_
+### _CommentAdded Event_
+
 This event is triggered whenever a new comment is added to an artwork. It includes the following parameters:
 
-artworkId (indexed): A unique identifier for the artwork to which the comment is attached. Indexing this parameter allows for efficient querying of comments by artwork ID.
-user (indexed): The address of the user who posted the comment. Indexing this parameter facilitates easy lookup of comments made by specific users.
+ **artworkId (indexed)**: A unique identifier for the artwork to which the comment is attached. Indexing this parameter allows for efficient querying of comments by artwork ID.
+**user (indexed)**: The address of the user who posted the comment. Indexing this parameter facilitates easy lookup of comments made by specific users.
 content: The textual content of the comment itself.
 
-**User upload art function**
+## Function for user upload art
+
 ```
-function uploadAnArt(
-string memory \_artname,
-string memory \_artimage,
-string memory \_artdescription,
-uint256 \_artprice
-) public {
-require(bytes(\_artname).length > 0, "art name is required");
-require(bytes(\_artimage).length > 0, "artimage is required");
-require(bytes(\_artdescription).length > 0, "artdecription is required");
-require(\_artprice > 1, "the price of art must be greater than 1 celo");
+function uploadAnArt(string memory  _artname, string memory  _artimage,string memory _artdescription,uint256 _artprice) public {
+  require(bytes(_artname).length > 0, "art name is required");
+  require(bytes(_artimage).length > 0, "art image is required");
+  require(bytes(_artdescription).length > 0, "art decription is required");
+  require(_artprice > 1, "the price of art must be greater than 1 celo");
 
         arts[artsLength] = Art({
             owner: payable(msg.sender),
@@ -245,13 +252,14 @@ require(\_artprice > 1, "the price of art must be greater than 1 celo");
           emit artCreated(artsLength, msg.sender, _artname);
         artsLength++;
     }
-```
-Function uploadAnArt is used to upload artwork.This function takes four parameters related to the artwork and performs several checks before adding the artwork to the contract's state.To pass parameter into a solidity functon you must define type of data you want to upload.Example
-_string memory \_artname_ specifies that \_artname is of type string.memory is a data location which is temporary.
-_require_ is used to verify that data that is passed by user meets the requirement required by contract.
-_msg.sender_ is the address calling the function
 
-    // get an art by detailas.
+```
+**Function uploadAnArt** is used to upload artwork.This function takes four parameters related to the artwork and performs several checks before adding the artwork to the contract's state.To pass parameter into a solidity functon you must define type of data you want to upload.Example
+**_string memory _artname_** specifies that _artname is of type string.memory is a data location which is temporary.
+**_require_** is used to verify that data that is passed by user meets the requirement required by contract.
+**_msg.sender_** is the address calling the function
+
+    // get art by detailas.
     ```
     function getArtDetails(uint256 _id)
         public
@@ -289,7 +297,7 @@ This function is used to get details of a specific art by passing the art id .
 
         // Delete the last element in the mapping
         delete arts[artsLength - 1];
-         emit artDeleted(artsLength, msg.sender, arts[artsLength].artName);
+        emit artDeleted(artsLength, msg.sender, arts[artsLength].artName);
 
         artsLength--;
     }
