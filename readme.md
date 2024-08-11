@@ -4,7 +4,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [What You Will Learn](#what-you-will-learn]
+- [What You Will Learn](#what-you-will-learn)
 - [Prerequisites](#prerequisites)
 - [Requirements](#requirements)
 - [What is Celo](#what-is-celo)
@@ -19,7 +19,7 @@
  creating a smart contract using Solidity, the industry-standard language for Ethereum-compatible blockchains, including Celo.
 
 ## What You Will Learn
-** By the end of this tutorial, you will have gained hands-on experience in:**
+**By the end of this tutorial, you will have gained hands-on experience in:**
 
  - Setting up your development environment for  Solidity.
  - Building a smart contract on celo using solidity.
