@@ -1,27 +1,27 @@
 #CELO-101
 # ART MARKETPLACE SMARTCONTRACT TUTORIAL
-**Table of Contents**<br />
-    1.Prerequisites <br />
-    2.Requirements<br />
-    3.What is Celo<br />
+##Table of Contents<br />
+    1.[Prerequisites](#Prerequisites) <br />
+    2.[Requirements](#Requirements)<br />
+    3.[What is Celo](#What-is-Celo)<br />
     4.Building our Smart Contract<br />
     5.Deploying the Smart Contract<br />
     6.Conclusion<br />
 
-**Prerequisites**
+##Prerequisites
 
  For this tutorial we will use [remix](https://remix.ethereum.org/) , an online IDE for web 3 and we won't have to worry about installing the prerequisites.We will you 
  Solidity for coding our smart contarct.Solidity this is the programming language used for writing smart contracts on platforms like Ethereum and Celo.
  Truffle or Hardhat: these are development frameworks for Ethereum that allow you to compile, deploy, test, and debug your smart contracts.
  MetaMask or Celo Extension Wallet these are browser wallet extensions that allow you to interact with the Ethereum or Celo blockchain, respectively.
 
-**Requirements**
+##Requirements
 
  Good internet connection
  A basic understanding of Solidity and smart contracts
  A basic understanding of blockchain and Web3
  Building our Smart Contract
-**What is Celo?**
+##What is Celo?
  Celo is a blockchain platform designed with a focus on financial inclusion, particularly targeting emerging markets. It aims to make cryptocurrency accessible to mobile phone users without requiring sophisticated hardware like traditional Bitcoin miners do.For more details vist [celo](https://celo.org/)
 
 **Building our Smart Contract**
