@@ -9,7 +9,7 @@
 - [Requirements](#requirements)
 - [What is Celo](#what-is-celo)
 - [Building our Smart Contract](#building-our-smart-contract)
-- [Deploying the Smart Contract](#deploying-the-smart-contract)
+- [Testing And Deploying the Smart Contract](#testing-and-deploying-the-smart-contract)
 - [Conclusion](#conclusion)
 
 ---
