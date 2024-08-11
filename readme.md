@@ -1,5 +1,5 @@
 #CELO-101
-
+# ART MARKETPLACE SMARTCONTRACT TUTORIAL(Heading 1)
 **Table of Contents**<br />
     1.Prerequisites <br />
     2.Requirements<br />
@@ -10,12 +10,10 @@
 
 **Prerequisites**
 
- For this tutorial we will use [remix](https://remix.ethereum.org/) , an online IDE for web 3 and we won't have to worry about installing the prerequisites.
- Solidity: This is the programming language used for writing smart contracts on platforms like Ethereum and Celo.
- Truffle or Hardhat: These are development frameworks for Ethereum that allow you to compile, deploy, test, and debug your smart contracts.
- MetaMask or Celo Extension Wallet: These are browser extensions that allow you to interact with the Ethereum or Celo blockchain, respectively.
- Infura or DataHub: These are blockchain infrastructure platforms that provide APIs to connect your application to the Ethereum or Celo network.
- Web3.js or ethers.js: These are JavaScript libraries for interacting with the Ethereum blockchain.
+ For this tutorial we will use [remix](https://remix.ethereum.org/) , an online IDE for web 3 and we won't have to worry about installing the prerequisites.We will you 
+ Solidity for coding our smart contarct.Solidity this is the programming language used for writing smart contracts on platforms like Ethereum and Celo.
+ Truffle or Hardhat: these are development frameworks for Ethereum that allow you to compile, deploy, test, and debug your smart contracts.
+ MetaMask or Celo Extension Wallet these are browser wallet extensions that allow you to interact with the Ethereum or Celo blockchain, respectively.
 
 **Requirements**
 
