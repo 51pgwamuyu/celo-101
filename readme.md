@@ -20,7 +20,7 @@
 
 ## What You Will Learn
 **By the end of this tutorial, you will have gained hands-on experience in:**
-
+ - What is celo
  - Setting up your development environment for  Solidity.
  - Building a smart contract on celo using solidity.
  - Testing your smart contract to ensure it functions as expected.
@@ -42,12 +42,12 @@
 ## What is Celo?
  Celo is a blockchain platform designed with a focus on financial inclusion, particularly targeting emerging markets. It aims to make cryptocurrency accessible to mobile phone users without requiring sophisticated hardware like traditional Bitcoin miners do.For more details vist [celo](https://celo.org/)
 
-**Building our Smart Contract**
+##Building our Smart Contract
 
 We will go through an example of a celo smart contract written in solidity for art marketplace
 Navigate to **Remix IDE**.
 
-Create a new Fileand call it a artmarketplace.sol and paste the following code below
+Create a new file and call it a artmarketplace.sol and paste the following code below
 ```
     // SPDX-License-Identifier: GPL-3.0
 
