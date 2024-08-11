@@ -24,27 +24,31 @@
  - Setting up your development environment for  Solidity.
  - Building a smart contract on celo using solidity.
  - Testing your smart contract to ensure it functions as expected.
+ - How to use Alfajores
  - Deploying your smart contract.
-   
+
+## What is Celo?
+ Celo is a blockchain platform designed with a focus on financial inclusion, particularly targeting emerging markets. It aims to make cryptocurrency accessible to mobile 
+  phone users without requiring sophisticated hardware like traditional Bitcoin miners do.For more details vist [celo](https://celo.org/)   
+  
 ## Prerequisites
 
- For this tutorial we will use [remix](https://remix.ethereum.org/) , an online IDE for web 3 and we won't have to worry about installing the prerequisites.We will you 
- Solidity for coding our smart contarct.Solidity this is the programming language used for writing smart contracts on platforms like Ethereum and Celo.
- Truffle or Hardhat: these are development frameworks for Ethereum that allow you to compile, deploy, test, and debug your smart contracts.
- MetaMask or Celo Extension Wallet these are browser wallet extensions that allow you to interact with the Ethereum or Celo blockchain, respectively.
+ For this tutorial we will use [remix](https://remix.ethereum.org/) , an online IDE for web 3 and we won't have to worry about installing the prerequisites like 
+ vscode.We will use
+ Solidity for coding our smart contarct which is the programming language used for writing smart contracts on platforms like Ethereum and Celo.
+ Truffle and Hardhat or Celo Composser are the development frameworks for Ethereum that allow you to compile, deploy, test, and debug your smart contracts.
+ MetaMask or Celo Extension Wallet, these are browser wallet extensions that allow you to interact with the Ethereum or Celo blockchain, respectively.
 
 ## Requirements
 
- Good internet connection
- A basic understanding of Solidity and smart contracts
- A basic understanding of blockchain and Web3
- Building our Smart Contract
-## What is Celo?
- Celo is a blockchain platform designed with a focus on financial inclusion, particularly targeting emerging markets. It aims to make cryptocurrency accessible to mobile phone users without requiring sophisticated hardware like traditional Bitcoin miners do.For more details vist [celo](https://celo.org/)
+ - Good internet connection since we will be coding online
+ - A basic understanding of Solidity and smart contracts
+ - A basic understanding of blockchain and Web3
+
 
 ##Building our Smart Contract
 
-We will go through an example of a celo smart contract written in solidity for art marketplace
+We will go through an example of a celo smart contract I have  written in solidity for art marketplace
 Navigate to **Remix IDE**.
 
 Create a new file and call it a artmarketplace.sol and paste the following code below
