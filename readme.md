@@ -317,7 +317,8 @@ function buyArt(uint256 _artid) public payable {
 
 ```
 
-//This fs useunction id to add comment about an art
+This function is used to add comment about an art
+
 ```
    function addComment(uint256 artworkId, string memory content) public {
     _comments[artworkId].push(
@@ -326,7 +327,7 @@ function buyArt(uint256 _artid) public payable {
     emit CommentAdded(artworkId, msg.sender, content); 
    }
    ```
-This function takes artid and the comment.It the emit event commentAdded if the function runs successfully.
+//This function takes artid and the comment.It the emit event commentAdded if the function runs successfully.
 
 //function to addlike to an art
 ```
@@ -335,12 +336,13 @@ This function takes artid and the comment.It the emit event commentAdded if the 
         emit LikeAdded(artworkId, msg.sender);
     }
 ```
-This function take art id.when user click like button the address of the user is added to _likes comment.It then emmits events likeAdded
+//This function take art id.when user click like button the address of the user is added to _likes comment.It then emmits events likeAdded
 
 
 This is the full code 
 
-```solidity
+```
+
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
@@ -475,7 +477,6 @@ contract art {
         artsLength--;
     }
 
-    //get all arts
     // function to buy art
     function buyArt(uint256 _index) public payable {
         require(
