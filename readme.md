@@ -2,7 +2,6 @@
 # ART MARKETPLACE SMARTCONTRACT TUTORIAL
 
 ##Table of Contents
-
     1.[Prerequisites](#prerequisites)
     2.[Requirements](#requirements)
     3.[What is Celo](#what-is-celo)
