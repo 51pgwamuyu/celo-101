@@ -132,20 +132,35 @@ This Event is emitted when the approve function is called, signaling that the sp
 
 ```
 contract art {
-uint256 internal artsLength = 0;
-address internal cUsdTokenAddress =
-0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
+  uint256 internal artsLength = 0;
+  address internal cUsdTokenAddress =
+  0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
 
-    constructor(address _cUsdTokenAddress) {
-        cUsdTokenAddress = _cUsdTokenAddress;
-    }
+  constructor(address _cUsdTokenAddress) {
+     cUsdTokenAddress = _cUsdTokenAddress;
+  }
 
 }
 ```
-**contarct Art{...}**.To define a contract in solidity we use name **contract** followed by name of your contract like oures is art.
-**uint256** is a data type that stands for unsigned integer .**Internal** it means that the variable can only be accessed from within the current contract
-**artLength** represents the count of arts created by user.
-**address internal cUsdTokenAddress =0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;**.**address* is used to represent account on the blockchain.To get ccUsdTokenAddres you need Celo Wallet,You can Install a Celo wallet extension from you browser extension store like chromestore.Finish the neccessary steps for registration.<>Choose you test network for our case we will go with **Alfajores Test Network**.This is an EVM-compatible blockchain developed by Celo. It serves as a testnet for Celo, allowing developers to experiment and deploy their smart contracts in a controlled environment before deploying to the main Celo network. Alfajores offers a low-cost and developer-friendly platform for testing and showcasing applications built on Celo.Copy the address and head to [faucet](https://celo.org/developers/faucet) to claim free tokens for deploying your smart contract.
+#### contarct Art{...}:
+
+  To define a contract in solidity we use name **contract** followed by name of your contract like oures is art.
+  
+### uint256:
+
+ This a data type that stands for unsigned integer .
+ 
+### Internal:
+
+ it means that the variable can only be accessed from within the current contract
+ 
+### artLength:
+
+This represents the count of arts created by user.
+
+### address internal cUsdTokenAddress =0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1:
+
+**address** is used to represent account on the blockchain.To get ccUsdTokenAddres you need Celo Wallet,You can Install a Celo wallet extension from you browser extension store like chromestore.Finish the neccessary steps for registration.<>Choose you test network for our case we will go with **Alfajores Test Network**.This is an EVM-compatible blockchain developed by Celo. It serves as a testnet for Celo, allowing developers to experiment and deploy their smart contracts in a controlled environment before deploying to the main Celo network. Alfajores offers a low-cost and developer-friendly platform for testing and showcasing applications built on Celo.Copy the address and head to [faucet](https://celo.org/developers/faucet) to claim free tokens for deploying your smart contract.
 
 
 ```
