@@ -1,5 +1,5 @@
 #CELO-101
-# ART MARKETPLACE SMARTCONTRACT TUTORIAL(Heading 1)
+# ART MARKETPLACE SMARTCONTRACT TUTORIAL
 **Table of Contents**<br />
     1.Prerequisites <br />
     2.Requirements<br />
