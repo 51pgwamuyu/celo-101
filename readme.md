@@ -517,7 +517,7 @@ contract art {
 
 To test the smart contract vist [remix](https://docs.celo.org/developer/deploy/remix). Install celo extension wallet from chromestore for chrome users.
 To create a contract go to remix ide and  create a new file for your Solidity smart contract in Remix like ours we will name it as 
-*art.sol*.
+*art.sol* and paste the code above.
 
 ![Alt Text](./images/smart.png)
 
