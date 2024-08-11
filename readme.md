@@ -3,6 +3,8 @@
 
 ## Table of Contents
 
+- [Introduction](#introduction)
+- [What You Will Learn](#what-you-will-learn]
 - [Prerequisites](#prerequisites)
 - [Requirements](#requirements)
 - [What is Celo](#what-is-celo)
@@ -12,6 +14,18 @@
 
 ---
 
+## Introduction
+ Welcome to this comprehensive tutorial on developing a smart contract for an art marketplace on the Celo blockchain!.This tutorial guides you through the process of 
+ creating a smart contract using Solidity, the industry-standard language for Ethereum-compatible blockchains, including Celo.
+
+## What You Will Learn
+** By the end of this tutorial, you will have gained hands-on experience in:**
+
+ - Setting up your development environment for  Solidity.
+ - Building a smart contract on celo using solidity.
+ - Testing your smart contract to ensure it functions as expected.
+ - Deploying your smart contract.
+   
 ## Prerequisites
 
  For this tutorial we will use [remix](https://remix.ethereum.org/) , an online IDE for web 3 and we won't have to worry about installing the prerequisites.We will you 
