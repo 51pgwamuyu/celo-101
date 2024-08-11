@@ -118,7 +118,7 @@ This function queries and returns the current balance of tokens held by the spec
 
 ### function allowance(address owner, address spender)
 
-This funcrion returns the remaining number of tokens that the spender is still allowed to draw from the owner's account. This is part of the approval mechanism, allowing holders to see how much of their tokens have been approved for spending by others.
+This function returns the remaining number of tokens that the spender is still allowed to draw from the owner's account. This is part of the approval mechanism, allowing holders to see how much of their tokens have been approved for spending by others.
 
 ## Events
 
@@ -254,36 +254,31 @@ function uploadAnArt(string memory  _artname, string memory  _artimage,string me
     }
 
 ```
-**Function uploadAnArt** is used to upload artwork.This function takes four parameters related to the artwork and performs several checks before adding the artwork to the contract's state.To pass parameter into a solidity functon you must define type of data you want to upload.Example
+### Function uploadAnArt
+
+This function is used to upload artwork.This function takes four parameters related to the artwork and performs several checks before adding the artwork to the contract's state.To pass parameter into a solidity function you must define type of data you want to upload.Example
 **_string memory _artname_** specifies that _artname is of type string.memory is a data location which is temporary.
 **_require_** is used to verify that data that is passed by user meets the requirement required by contract.
 **_msg.sender_** is the address calling the function
 
-    // get art by detailas.
+
+_The below function is used to get details of a specific art by passing the art id_ .
+    
     ```
-    function getArtDetails(uint256 _id)
-        public
-        view
-        returns (
-            address,
-            string memory,
-            string memory,
-            string memory,
-            uint256
-        )
-    {
-        return (
+    function getArtDetails(uint256 _id) public view returns (address,string memory,string memory,string memory,uint256){
+      return (
             arts[_id].owner,
             arts[_id].artName,
             arts[_id].artdescription,
-            arts[_id].artimageurl,
+            arts[_id].artimageurl,      
             arts[_id].artprice
         );
     }
+    
 ```
-This function is used to get details of a specific art by passing the art id .
 
-    // owner delete an art
+_The below function is used to delete art by passing the art id and also verifying that its only the owner can delete the art_ 
+   
     ```
     function deleteArt(uint256 id) public {
         require(
@@ -302,27 +297,27 @@ This function is used to get details of a specific art by passing the art id .
         artsLength--;
     }
 ```
-This function is used to delete art from smart contract.You pass the id of the art.require is used to make sure that its only the owner of the art can delete it.
 
-//function to buy art
+
+_This function is used for purchase of art where you pass the artid as parameter.The require statement is used to ensure that a condition is ment before proceeding with the function execution. In this case, we perform a transferFrom operation on the ERC-20 token contract specified by cUsdTokenAddress.The first argument to transferFrom is the sender of the tokens, which is the caller of the buyArt function (msg.sender).The second argument is the recipient of the tokens, which is the owner of the artwork (arts[_artid].owner).The third argument is the amount of tokens to transfer, which is the price of the artwork (arts[_artid].artprice).
+If the transferFrom operation fails (e.g., due to insufficient balance, or incorrect parameters), the require statement will revert the transaction and display the message "Transfer failed."_
+
 ```
-function buyArt(uint256 \_artid) public payable {
-require(
-IERC20Token(cUsdTokenAddress).transferFrom(
-msg.sender,
-arts[_artid].owner,
-arts[_artid].artprice
-),
-"Transfer failed."
-);
+function buyArt(uint256 _artid) public payable {
+  require(
+    IERC20Token(cUsdTokenAddress).transferFrom(
+    msg.sender,
+    arts[_artid].owner,
+    arts[_artid].artprice
+    ),
+
+    "Transfer failed."
+   );
 }
-```
-This function is used for purchase of art where you pass the artid as parameter.The require statement is used to ensure that a condition is met before proceeding with the function execution. In this case, we perform a transferFrom operation on the ERC-20 token contract specified by cUsdTokenAddress.The first argument to transferFrom is the sender of the tokens, which is the caller of the buyArt function (msg.sender).
-The second argument is the recipient of the tokens, which is the owner of the artwork (arts[_artid].owner).
-The third argument is the amount of tokens to transfer, which is the price of the artwork (arts[_artid].artprice).
-If the transferFrom operation fails (e.g., due to insufficient balance, allowance issues, or incorrect parameters), the require statement will revert the transaction and display the message "Transfer failed."
 
-//This function is used to add comment about an art
+```
+
+//This fs useunction id to add comment about an art
 ```
    function addComment(uint256 artworkId, string memory content) public {
     _comments[artworkId].push(
@@ -517,14 +512,17 @@ contract art {
 
 
 
-**Testing And Deploying the Smart Contract**
-To test the smart contract vist [remix](https://docs.celo.org/developer/deploy/remix).You can install celo extension 
-Create Contract: Create a new file for your Solidity smart contract in Remix like ours we will name it as 
+## Testing And Deploying the Smart Contract
+
+To test the smart contract vist [remix](https://docs.celo.org/developer/deploy/remix). Install celo extension wallet from chromestore for chrome users.
+To create a contract go to remix ide and  create a new file for your Solidity smart contract in Remix like ours we will name it as 
 *art.sol*.
 
 ![Alt Text](./images/smart.png)
 
-Compile Contract: Click on the "Solidity Compiler" tab in the sidebar and select the appropriate compiler version for your contract. Click "Compile" to compile your contract code.
+### To Compile Contract:
+
+Click on the "Solidity Compiler" tab in the sidebar and select the appropriate compiler version for your contract. Click "Compile" to compile your contract code.
 
 ![Alt Text](./images/smart2.png)
 Go to your celo wallet that is Alfajores Test Network and copy the address
@@ -535,7 +533,7 @@ if your smart have deployed successfully you will see this
 ![Alt Text](./images/smart5.png)
 
 
-**Conclusion**
+## Conclusion
 In this tutorial, we've explored the process of building a decentralized art markeplace on the Celo blockchain using Solidity smart contracts. 
 We’ve learned about various components of the contract, including structs for representing various data types for our contract, mappings for storing these objects, events for logging significant occurrences, and functions for creating art,deleting art,coment,like
 
