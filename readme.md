@@ -1,7 +1,8 @@
 #CELO-101
 # ART MARKETPLACE SMARTCONTRACT TUTORIAL
 
-##Table of Contents
+## Table of Contents
+
     -[Prerequisites](#prerequisites)
     -[Requirements](#requirements)
     -[What is Celo](#what-is-celo)
